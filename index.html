@@ -1,0 +1,1502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XYNE X | Social Media Marketing</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --primary-red: #b91c1c;
+            --primary-black: #0a0a0a;
+            --primary-silver: #e5e5e5;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--primary-black);
+            color: var(--primary-silver);
+            overflow-x: hidden;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, var(--primary-silver), var(--primary-red));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .card-hover {
+            transition: all 0.4s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(185, 28, 28, 0.3);
+        }
+        
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary-red), transparent);
+        }
+        
+        .package-card {
+            background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+            border: 1px solid #333;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .premium-highlight {
+            position: relative;
+            border: 2px solid var(--primary-red);
+            transform: scale(1.05);
+        }
+        
+        .premium-highlight::before {
+            content: "POPULAR";
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: var(--primary-red);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            z-index: 10;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-red);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(90deg, var(--primary-red), #991b1b);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(90deg, #991b1b, #7f1d1d);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(185, 28, 28, 0.4);
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .portfolio-section {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .portfolio-section.active {
+            display: block;
+            opacity: 1;
+        }
+        
+        .portfolio-item {
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+        
+        .portfolio-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 20px rgba(185, 28, 28, 0.2);
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translate(0, 0px); }
+            50% { transform: translate(0, 15px); }
+            100% { transform: translate(0, -0px); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(185, 28, 28, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(185, 28, 28, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(185, 28, 28, 0); }
+        }
+        
+        .typewriter {
+            overflow: hidden;
+            border-right: .15em solid var(--primary-red);
+            white-space: nowrap;
+            margin: 0 auto;
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--primary-red); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        
+        .glow {
+            box-shadow: 0 0 20px rgba(185, 28, 28, 0.3);
+        }
+        
+        .back-to-packages {
+            transition: all 0.3s ease;
+        }
+        
+        .back-to-packages:hover {
+            transform: translateX(-5px);
+        }
+        
+        /* Bahrain Map Styles */
+        .bahrain-map-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .bahrain-map {
+            width: 100%;
+            height: auto;
+            filter: grayscale(100%) brightness(0.5);
+        }
+        
+        .offline-radius {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 200px;
+            border: 2px dashed #e5e5e5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #e5e5e5;
+            font-weight: bold;
+        }
+        
+        .online-coverage {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(185, 28, 28, 0.3) 0%, rgba(185, 28, 28, 0) 70%);
+            border-radius: 50%;
+            animation: pulse-online 4s infinite;
+        }
+        
+        @keyframes pulse-online {
+            0% { transform: scale(0.8); opacity: 0.7; }
+            50% { transform: scale(1.1); opacity: 0.4; }
+            100% { transform: scale(0.8); opacity: 0.7; }
+        }
+        
+        .comparison-card {
+            transition: all 0.4s ease;
+            border-left: 4px solid;
+        }
+        
+        .online-card {
+            border-left-color: var(--primary-red);
+        }
+        
+        .offline-card {
+            border-left-color: #666;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+        
+        .red-glow {
+            box-shadow: 0 0 30px rgba(185, 28, 28, 0.5);
+        }
+        
+        /* Terms & Conditions Styles */
+        .terms-container {
+            background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+            border-radius: 12px;
+            padding: 2rem;
+            border: 1px solid #333;
+        }
+        
+        .terms-item {
+            display: flex;
+            margin-bottom: 1.5rem;
+            align-items: flex-start;
+        }
+        
+        .terms-icon {
+            background: rgba(185, 28, 28, 0.2);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .terms-content {
+            flex: 1;
+        }
+        
+        /* Contact Form Styles */
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form select {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 12px 16px;
+            color: white;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-form input:focus,
+        .contact-form textarea:focus,
+        .contact-form select:focus {
+            outline: none;
+            border-color: var(--primary-red);
+            box-shadow: 0 0 0 2px rgba(185, 28, 28, 0.2);
+        }
+        
+        .contact-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .social-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-3px);
+        }
+        
+        /* Fixed datetime-local input styling */
+        input[type="datetime-local"] {
+            color-scheme: dark;
+            position: relative;
+        }
+        
+        input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+            cursor: pointer;
+            background: none;
+        }
+        
+        /* Custom date input styling */
+        .date-input-container {
+            position: relative;
+        }
+        
+        .date-input-container::after {
+            content: "📅";
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+            color: #b91c1c;
+            font-size: 1.2rem;
+        }
+        
+        /* Alternative date selection method */
+        .date-selection {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .date-option {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 10px 15px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex: 1;
+            min-width: 120px;
+            text-align: center;
+        }
+        
+        .date-option:hover {
+            background: rgba(185, 28, 28, 0.2);
+            border-color: #b91c1c;
+        }
+        
+        .date-option.selected {
+            background: rgba(185, 28, 28, 0.3);
+            border-color: #b91c1c;
+            color: #b91c1c;
+        }
+        
+        /* Error message styling */
+        .error-message {
+            color: #ef4444;
+            font-size: 0.875rem;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        /* Success message styling */
+        .success-message {
+            color: #10b981;
+            font-size: 0.875rem;
+            margin-top: 5px;
+            display: none;
+        }
+
+        /* Portfolio Modal Styles */
+        .portfolio-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .portfolio-modal.active {
+            display: block;
+        }
+
+        .portfolio-modal-content {
+            background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 12px;
+            max-width: 900px;
+            position: relative;
+            border: 1px solid #333;
+        }
+
+        .close-portfolio {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.5rem;
+            color: #b91c1c;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .close-portfolio:hover {
+            transform: scale(1.2);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .portfolio-item {
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-black text-silver">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-black/90 backdrop-blur-sm z-50 border-b border-gray-800">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <h1 class="text-2xl font-bold gradient-text" data-aos="fade-down">XYNE X</h1>
+                <span class="text-xs text-gray-400 ml-2">DIGITAL SOLUTIONS</span>
+            </div>
+            
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link text-silver hover:text-white">Home</a>
+                <a href="#services" class="nav-link text-silver hover:text-white">Services</a>
+                <a href="#comparison" class="nav-link text-silver hover:text-white">Comparison</a>
+                <a href="#packages" class="nav-link text-silver hover:text-white">Packages</a>
+                <a href="#terms" class="nav-link text-silver hover:text-white">Terms</a>
+                <a href="#contact" class="nav-link text-silver hover:text-white">Contact</a>
+            </div>
+            
+            <div class="flex items-center space-x-4">
+                <a href="https://www.instagram.com/xynex.in" target="_blank" class="text-silver hover:text-pink-400 transition">
+                    <i class="fab fa-instagram text-xl"></i>
+                </a>
+                <button class="md:hidden text-silver">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-20 px-4 relative overflow-hidden">
+        <!-- Animated Background Elements -->
+        <div class="absolute top-10 left-10 w-20 h-20 bg-red-500/10 rounded-full floating"></div>
+        <div class="absolute bottom-20 right-20 w-16 h-16 bg-red-500/10 rounded-full floating" style="animation-delay: 1s;"></div>
+        <div class="absolute top-1/3 right-1/4 w-12 h-12 bg-red-500/10 rounded-full floating" style="animation-delay: 2s;"></div>
+        
+        <div class="container mx-auto text-center relative z-10">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6" data-aos="fade-up">
+                <span class="text-white">Digital</span>
+                <span class="gradient-text">Marketing</span>
+            </h1>
+            <p class="text-xl text-gray-300 max-w-2xl mx-auto mb-10 fade-in">
+                Elevate your brand with our premium digital marketing solutions designed for maximum engagement and growth.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4" data-aos="fade-up" data-aos-delay="200">
+                <a href="#packages" class="btn-primary py-3 px-8 rounded-lg font-semibold pulse">
+                    View Packages
+                </a>
+                <a href="#contact" class="border border-red-700 text-red-500 py-3 px-8 rounded-lg font-semibold hover:bg-red-900/20 transition">
+                    Book a Meeting
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 px-4">
+        <div class="container mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4" data-aos="fade-up">Our Services</h2>
+            <p class="text-gray-400 text-center mb-12 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">We provide comprehensive digital marketing solutions to elevate your brand's online presence.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="package-card p-6 card-hover" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-red-500 mb-4">
+                        <i class="fas fa-users text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Social Media Management</h3>
+                    <p class="text-gray-400">Professional management of your social media accounts across all major platforms.</p>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="package-card p-6 card-hover" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-red-500 mb-4">
+                        <i class="fas fa-palette text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Branding</h3>
+                    <p class="text-gray-400">Create a strong brand identity that resonates with your target audience.</p>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="package-card p-6 card-hover" data-aos="fade-up" data-aos-delay="400">
+                    <div class="text-red-500 mb-4">
+                        <i class="fas fa-video text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Video Promotion</h3>
+                    <p class="text-gray-400">Engage your audience with professionally produced and promoted video content.</p>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="package-card p-6 card-hover" data-aos="fade-up" data-aos-delay="500">
+                    <div class="text-red-500 mb-4">
+                        <i class="fas fa-star text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Influence Marketing</h3>
+                    <p class="text-gray-400">Leverage the power of influencers to expand your brand's reach.</p>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="package-card p-6 card-hover" data-aos="fade-up" data-aos-delay="600">
+                    <div class="text-red-500 mb-4">
+                        <i class="fas fa-code text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Web Development</h3>
+                    <p class="text-gray-400">Create stunning, responsive websites that convert visitors into customers.</p>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="package-card p-6 card-hover" data-aos="fade-up" data-aos-delay="700">
+                    <div class="text-red-500 mb-4">
+                        <i class="fas fa-search text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">SEO Optimization</h3>
+                    <p class="text-gray-400">Improve your search engine rankings and drive organic traffic to your website.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Psychological Comparison Section -->
+    <section id="comparison" class="py-20 px-4 bg-gradient-to-b from-black to-gray-900">
+        <div class="container mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4" data-aos="fade-up">The Smart Investment Choice</h2>
+            <p class="text-gray-400 text-center mb-12 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+                People pay 250 BHD for shop rent but hesitate to invest 100 BHD in digital marketing. Let's compare the reality.
+            </p>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Bahrain Map Visualization -->
+                <div class="bahrain-map-container" data-aos="fade-right">
+                    <img src="./images/bh.PNG" alt="Bahrain Map" class="bahrain-map">
+                    <div class="offline-radius">
+                        <span>5KM Radius</span>
+                    </div>
+                    <div class="online-coverage"></div>
+                    
+                    <div class="mt-6 text-center">
+                        <div class="flex justify-center items-center space-x-6 mb-4">
+                            <div class="flex items-center">
+                                <div class="w-4 h-4 bg-red-500 rounded-full mr-2"></div>
+                                <span class="text-sm">Online Marketing Reach</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-4 h-4 border border-white rounded-full mr-2"></div>
+                                <span class="text-sm">Offline Physical Reach</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Comparison Content -->
+                <div data-aos="fade-left">
+                    <div class="mb-8">
+                        <h3 class="text-2xl font-bold mb-4 text-red-500">Current Market Reality in Bahrain</h3>
+                        <p class="text-gray-300 mb-6">
+                            In today's digital age, your customers are online. While physical stores limit you to a small geographic area, 
+                            online marketing opens your business to the entire country and beyond.
+                        </p>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Online Marketing Benefits -->
+                        <div class="comparison-card online-card p-6 bg-gray-900 rounded-r-lg red-glow">
+                            <h4 class="text-xl font-bold mb-4 flex items-center">
+                                <i class="fas fa-globe text-red-500 mr-3"></i>
+                                Online Marketing
+                            </h4>
+                            <ul class="space-y-3">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                    <span>Unlimited business potential across Bahrain</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                    <span>Target specific audience with precision</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                    <span>No need for multiple employees</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                    <span>Minimal electricity & overhead costs</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                    <span>24/7 business presence</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Offline Marketing Limitations -->
+                        <div class="comparison-card offline-card p-6 bg-gray-900 rounded-r-lg">
+                            <h4 class="text-xl font-bold mb-4 flex items-center">
+                                <i class="fas fa-store text-gray-400 mr-3"></i>
+                                Offline Only
+                            </h4>
+                            <ul class="space-y-3">
+                                <li class="flex items-start">
+                                    <i class="fas fa-times text-red-500 mt-1 mr-3"></i>
+                                    <span>Limited to ~5km surrounding area</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-times text-red-500 mt-1 mr-3"></i>
+                                    <span>Random walk-in customers only</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-times text-red-500 mt-1 mr-3"></i>
+                                    <span>Multiple employees required</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-times text-red-500 mt-1 mr-3"></i>
+                                    <span>High electricity & rental costs</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-times text-red-500 mt-1 mr-3"></i>
+                                    <span>Limited to business hours only</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Psychological Comparison -->
+                    <div class="mt-8 p-6 package-card" data-aos="zoom-in">
+                        <h4 class="text-xl font-bold mb-4 text-center">The Psychological Investment Comparison</h4>
+                        <div class="flex flex-col md:flex-row justify-between items-center">
+                            <div class="text-center mb-6 md:mb-0">
+                                <div class="stat-number text-red-500">250 BHD</div>
+                                <p class="text-gray-400">Monthly Shop Rent</p>
+                                <p class="text-sm text-gray-500 mt-2">People pay without hesitation</p>
+                            </div>
+                            
+                            <div class="text-3xl text-gray-500 mx-4">VS</div>
+                            
+                            <div class="text-center">
+                                <div class="stat-number text-green-500">59 BHD</div>
+                                <p class="text-gray-400">Starter Marketing Package</p>
+                                <p class="text-sm text-gray-500 mt-2">Brings customers to your shop</p>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6 text-center">
+                            <p class="text-gray-300">
+                                <span class="text-red-500 font-bold">Question:</span> Why pay 250 BHD for empty space when 59 BHD can fill it with customers?
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Call to Action -->
+            <div class="mt-16 text-center" data-aos="fade-up">
+                <h3 class="text-2xl font-bold mb-4">Ready to Expand Your Business Beyond 5KM?</h3>
+                <p class="text-gray-400 mb-6 max-w-2xl mx-auto">
+                    Stop limiting your business to your immediate surroundings. With our digital marketing solutions, 
+                    your business can reach customers across all of Bahrain and beyond.
+                </p>
+                <a href="#contact" class="btn-primary py-3 px-8 rounded-lg font-semibold inline-block">
+                    Start Reaching More Customers Today
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Exclusive Features Section -->
+    <section class="py-16 px-4 bg-gradient-to-r from-black to-gray-900">
+        <div class="container mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12" data-aos="fade-up">Exclusive For You</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="bg-red-900/20 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 glow">
+                        <i class="fas fa-user-tie text-red-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Professional Account Management</h3>
+                    <p class="text-gray-400">On Facebook, Instagram, Tiktok & YouTube</p>
+                </div>
+                
+                <div class="text-center" data-aos="fade-up" data-aos-delay="400">
+                    <div class="bg-red-900/20 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 glow">
+                        <i class="fas fa-chart-line text-red-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Social Media Advertising</h3>
+                    <p class="text-gray-400">Estimate reach & link clicks according to ad spend</p>
+                </div>
+                
+                <div class="text-center" data-aos="fade-up" data-aos-delay="600">
+                    <div class="bg-red-900/20 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 glow">
+                        <i class="fas fa-headset text-red-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">24/7 Customer Support</h3>
+                    <p class="text-gray-400">Round-the-clock personalized support for your business needs</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages Section -->
+    <section id="packages" class="py-20 px-4">
+        <div class="container mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4" data-aos="fade-up">Our Packages & Pricing</h2>
+            <p class="text-gray-400 text-center mb-12 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">Choose the package that best fits your business needs and budget.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Starter Pack -->
+                <div class="package-card p-8 card-hover" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="text-2xl font-bold mb-2">Starter Pack</h3>
+                    <div class="text-3xl font-bold text-red-500 mb-6">59 BHD <span class="text-sm text-gray-400">/month</span></div>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start">
+                            <i class="fas fa-times text-red-500 mt-1 mr-3"></i>
+                            <span>1 Ads Post</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-times text-red-500 mt-1 mr-3"></i>
+                            <span>12 Branding Poster</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                            <span>Account Management</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-times text-red-500 mt-1 mr-3"></i>
+                            <span>Posting & Story Sharing (Weekly Basis)</span>
+                        </li>
+                    </ul>
+                    
+                    <button class="w-full border border-red-700 text-red-500 py-3 rounded-lg font-semibold hover:bg-red-900/20 transition view-portfolio" data-package="starter">
+                        View Portfolio
+                    </button>
+                </div>
+                
+                <!-- Growth Pack -->
+                <div class="package-card p-8 card-hover" data-aos="fade-up" data-aos-delay="300">
+                    <h3 class="text-2xl font-bold mb-2">Growth Pack</h3>
+                    <div class="text-3xl font-bold text-red-500 mb-6">99 BHD</div>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start">
+                            <i class="fas fa-times text-red-500 mt-1 mr-3"></i>
+                            <span>2 Ads Post</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                            <span>15 Branding Poster</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-times text-red-500 mt-1 mr-3"></i>
+                            <span>Account Management</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-times text-red-500 mt-1 mr-3"></i>
+                            <span>Posting & Story Sharing (Alternative Basis)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-times text-red-500 mt-1 mr-3"></i>
+                            <span>Page Making & Setting with content</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                            <span>1 Promotion video</span>
+                        </li>
+                    </ul>
+                    
+                    <button class="w-full border border-red-700 text-red-500 py-3 rounded-lg font-semibold hover:bg-red-900/20 transition view-portfolio" data-package="growth">
+                        View Portfolio
+                    </button>
+                </div>
+                
+                <!-- Premium Pack -->
+                <div class="package-card p-8 card-hover premium-highlight" data-aos="fade-up" data-aos-delay="400">
+                    <h3 class="text-2xl font-bold mb-2">Premium Pack</h3>
+                    <div class="text-3xl font-bold text-red-500 mb-6">149 BHD <span class="text-sm text-gray-400">/month</span></div>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start">
+                            <i class="fas fa-times text-red-500 mt-1 mr-3"></i>
+                            <span>3 Ads Post</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                            <span>15 Branding Poster</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                            <span>2 Promotion video</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                            <span>2 Anchoring reel</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-times text-red-500 mt-1 mr-3"></i>
+                            <span>Account Management</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-times text-red-500 mt-1 mr-3"></i>
+                            <span>Page Making & Setting with content</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                            <span>Posting & Story Sharing (Daily Basis)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                            <span>VAT Registration</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                            <span>Google My Business Setup</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                            <span>Monthly report submission</span>
+                        </li>
+                    </ul>
+                    
+                    <button class="w-full btn-primary py-3 rounded-lg font-semibold view-portfolio" data-package="premium">
+                        View Portfolio
+                    </button>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center text-gray-400" data-aos="fade-up">
+                <p><span class="text-red-500 font-semibold">Exclusion:</span> Paid Promotion (Depends on client Budget)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Modal -->
+    <div id="portfolio-modal" class="portfolio-modal">
+        <div class="portfolio-modal-content">
+            <span class="close-portfolio">&times;</span>
+            <h2 class="text-3xl font-bold mb-6 text-center">Our Portfolio</h2>
+            <div class="portfolio-grid" id="portfolio-content">
+                <!-- Portfolio content will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Terms & Conditions Section -->
+    <section id="terms" class="py-20 px-4 bg-gradient-to-b from-gray-900 to-black">
+        <div class="container mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4" data-aos="fade-up">Terms & Conditions</h2>
+            <p class="text-gray-400 text-center mb-12 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">Our commitment to delivering exceptional service with clear guidelines.</p>
+            
+            <div class="terms-container max-w-4xl mx-auto" data-aos="fade-up">
+                <div class="terms-item">
+                    <div class="terms-icon">
+                        <i class="fas fa-calendar-alt text-red-500"></i>
+                    </div>
+                    <div class="terms-content">
+                        <h3 class="text-xl font-bold mb-2">Minimum Engagement Period</h3>
+                        <p class="text-gray-300">The minimum period to gain consistent digital traction & creating a good follower base is 6 months.</p>
+                    </div>
+                </div>
+                
+                <div class="terms-item">
+                    <div class="terms-icon">
+                        <i class="fab fa-whatsapp text-red-500"></i>
+                    </div>
+                    <div class="terms-content">
+                        <h3 class="text-xl font-bold mb-2">Client Communication</h3>
+                        <p class="text-gray-300">We will create a WhatsApp group with client representative for reviews & feedback.</p>
+                    </div>
+                </div>
+                
+                <div class="terms-item">
+                    <div class="terms-icon">
+                        <i class="fas fa-file-contract text-red-500"></i>
+                    </div>
+                    <div class="terms-content">
+                        <h3 class="text-xl font-bold mb-2">Proposal Validity</h3>
+                        <p class="text-gray-300">Proposal valid for one month from the date of issue.</p>
+                    </div>
+                </div>
+                
+                <div class="terms-item">
+                    <div class="terms-icon">
+                        <i class="fas fa-comments text-red-500"></i>
+                    </div>
+                    <div class="terms-content">
+                        <h3 class="text-xl font-bold mb-2">Regular Updates</h3>
+                        <p class="text-gray-300">We will be in touch with the client at regular intervals for project-related updates & discussions.</p>
+                    </div>
+                </div>
+                
+                <div class="terms-item">
+                    <div class="terms-icon">
+                        <i class="fas fa-plus-circle text-red-500"></i>
+                    </div>
+                    <div class="terms-content">
+                        <h3 class="text-xl font-bold mb-2">Additional Requirements</h3>
+                        <p class="text-gray-300">Additional requirements outside of the regular scope will be discussed & billed separately.</p>
+                    </div>
+                </div>
+                
+                <div class="terms-item">
+                    <div class="terms-icon">
+                        <i class="fas fa-file-invoice text-red-500"></i>
+                    </div>
+                    <div class="terms-content">
+                        <h3 class="text-xl font-bold mb-2">Invoicing</h3>
+                        <p class="text-gray-300">Invoice will be generated & sent on the 1st of each month.</p>
+                    </div>
+                </div>
+                
+                <div class="terms-item">
+                    <div class="terms-icon">
+                        <i class="fas fa-ban text-red-500"></i>
+                    </div>
+                    <div class="terms-content">
+                        <h3 class="text-xl font-bold mb-2">Refund Policy</h3>
+                        <p class="text-gray-300">We do not have any refund policy once services have commenced.</p>
+                    </div>
+                </div>
+                
+                <div class="terms-item">
+                    <div class="terms-icon">
+                        <i class="fas fa-user-tie text-red-500"></i>
+                    </div>
+                    <div class="terms-content">
+                        <h3 class="text-xl font-bold mb-2">Dedicated Support</h3>
+                        <p class="text-gray-300">We will assign a dedicated customer relation executive for each client.</p>
+                    </div>
+                </div>
+                
+                <div class="terms-item">
+                    <div class="terms-icon">
+                        <i class="fas fa-globe text-red-500"></i>
+                    </div>
+                    <div class="terms-content">
+                        <h3 class="text-xl font-bold mb-2">Website</h3>
+                        <p class="text-gray-300">Visit our website for more information: <a href="https://infoxynex.in" class="text-red-500 hover:underline">infoxynex.in</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-4">
+        <div class="container mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4" data-aos="fade-up">Get In Touch</h2>
+            <p class="text-gray-400 text-center mb-12 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">Ready to elevate your digital presence? Contact us today for a free consultation.</p>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+                <!-- Contact Form -->
+                <div class="contact-form" data-aos="fade-right">
+                    <form id="whatsapp-form">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="business">Business Name</label>
+                            <input type="text" id="business" name="business">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="package">Interested Package</label>
+                            <select id="package" name="package" required>
+                                <option value="">Select a package</option>
+                                <option value="Starter Pack (59 BHD)">Starter Pack (59 BHD)</option>
+                                <option value="Growth Pack (99 BHD)">Growth Pack (99 BHD)</option>
+                                <option value="Premium Pack (149 BHD)">Premium Pack (149 BHD)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message (Optional)</label>
+                            <textarea id="message" name="message" rows="4"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="meeting-time">Preferred Meeting Time</label>
+                            
+                            <!-- Option 1: Standard datetime input with better styling -->
+                            <div class="date-input-container">
+                                <input type="datetime-local" id="meeting-time" name="meeting-time" class="w-full">
+                            </div>
+                            
+                            <!-- Option 2: Alternative date selection method -->
+                            <div class="mt-4">
+                                <p class="text-gray-400 text-sm mb-2">Or select a preferred time:</p>
+                                <div class="date-selection">
+                                    <div class="date-option" data-days="1">Tomorrow</div>
+                                    <div class="date-option" data-days="2">In 2 days</div>
+                                    <div class="date-option" data-days="7">Next week</div>
+                                    <div class="date-option" data-days="0">Let's discuss</div>
+                                </div>
+                            </div>
+                            
+                            <div class="error-message" id="date-error">
+                                Please select a valid date and time
+                            </div>
+                            <div class="success-message" id="date-success">
+                                Date selected successfully!
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="w-full btn-primary py-3 rounded-lg font-semibold mt-4">
+                            <i class="fab fa-whatsapp mr-2"></i> Send via WhatsApp
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Contact Information -->
+                <div class="flex flex-col justify-center" data-aos="fade-left">
+                    <div class="package-card p-8 mb-8">
+                        <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="bg-red-900/20 p-3 rounded-full mr-4">
+                                    <i class="fas fa-map-marker-alt text-red-500"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">Address</h4>
+                                    <p class="text-gray-400">Bahrain</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-red-900/20 p-3 rounded-full mr-4">
+                                    <i class="fab fa-whatsapp text-red-500"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">WhatsApp</h4>
+                                    <p class="text-gray-400">+973 3683 5116</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-red-900/20 p-3 rounded-full mr-4">
+                                    <i class="fas fa-envelope text-red-500"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">Email</h4>
+                                    <p class="text-gray-400">info@xynex.in</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-red-900/20 p-3 rounded-full mr-4">
+                                    <i class="fas fa-clock text-red-500"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">Business Hours</h4>
+                                    <p class="text-gray-400">24/7 Customer Support</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 pt-6 border-t border-gray-700">
+                            <h4 class="font-bold mb-4">Follow Us</h4>
+                            <div class="flex space-x-4">
+                                <a href="https://www.instagram.com/xynex.in" target="_blank" class="social-icon bg-red-900/20 p-3 rounded-full text-red-400 hover:bg-red-900/40">
+                                    <i class="fab fa-instagram text-xl"></i>
+                                </a>
+                                <a href="#" class="social-icon bg-red-900/20 p-3 rounded-full text-red-400 hover:bg-red-900/40">
+                                    <i class="fab fa-facebook-f text-xl"></i>
+                                </a>
+                                <a href="#" class="social-icon bg-red-900/20 p-3 rounded-full text-red-400 hover:bg-red-900/40">
+                                    <i class="fab fa-tiktok text-xl"></i>
+                                </a>
+                                <a href="#" class="social-icon bg-red-900/20 p-3 rounded-full text-red-400 hover:bg-red-900/40">
+                                    <i class="fab fa-linkedin-in text-xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="package-card p-8">
+                        <h3 class="text-2xl font-bold mb-6">Why Choose XYNE X?</h3>
+                        
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span>Proven track record with businesses in Bahrain</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span>Customized strategies for your specific industry</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span>Transparent reporting and analytics</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span>Dedicated account manager</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span>24/7 customer support</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span>Competitive pricing with measurable results</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-4 bg-gradient-to-t from-black to-gray-900 border-t border-gray-800">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <h2 class="text-2xl font-bold gradient-text">XYNE X</h2>
+                    <p class="text-gray-400 mt-2">DIGITAL SOLUTIONS</p>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="https://www.instagram.com/xynex.in" target="_blank" class="text-gray-400 hover:text-pink-400 transition social-icon">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-red-400 transition social-icon">
+                        <i class="fab fa-facebook-f text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-red-400 transition social-icon">
+                        <i class="fab fa-linkedin-in text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-purple-500 transition social-icon">
+                        <i class="fab fa-tiktok text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="mt-8 pt-8 border-t border-gray-800 text-center text-gray-400">
+                <p>&copy; 2023 XYNE X | DIGITAL SOLUTIONS. All rights reserved.</p>
+                <p class="mt-2"><a href="https://infoxynex.in" class="text-red-500 hover:underline">infoxynex.in</a> | WhatsApp: +973 3683 5116</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS (Animate On Scroll)
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Portfolio functionality
+        document.querySelectorAll('.view-portfolio').forEach(button => {
+            button.addEventListener('click', function() {
+                const modal = document.getElementById('portfolio-modal');
+                const content = document.getElementById('portfolio-content');
+                
+                // Clear previous content
+                content.innerHTML = '';
+                
+                // Add portfolio items
+                const portfolioItems = getPortfolioItems();
+                portfolioItems.forEach(item => {
+                    const portfolioItem = document.createElement('div');
+                    portfolioItem.className = 'portfolio-item';
+                    portfolioItem.innerHTML = `
+                        <img src="${item.image}" alt="${item.title}">
+                    `;
+                    content.appendChild(portfolioItem);
+                });
+                
+                // Show modal
+                modal.classList.add('active');
+            });
+        });
+        
+        // Close portfolio modal
+        document.querySelector('.close-portfolio').addEventListener('click', function() {
+            document.getElementById('portfolio-modal').classList.remove('active');
+        });
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('portfolio-modal');
+            if (event.target === modal) {
+                modal.classList.remove('active');
+            }
+        });
+        
+        // Function to get portfolio items
+        function getPortfolioItems() {
+            // Sample portfolio items - replace with actual portfolio images
+            const items = [
+                { image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHNvY2lhbCUyMG1lZGlhJTIwbWFya2V0aW5nfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60', title: 'Social Media Campaign' },
+                { image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGRpZ2l0YWwlMjBtYXJrZXRpbmd8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60', title: 'Brand Design' },
+                { image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGRpZ2l0YWwlMjBtYXJrZXRpbmd8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60', title: 'Content Creation' },
+                { image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGRpZ2l0YWwlMjBtYXJrZXRpbmd8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60', title: 'Advertising Campaign' }
+            ];
+            
+            return items;
+        }
+        
+        // Package selection in contact form
+        document.querySelectorAll('.package-card button').forEach(button => {
+            button.addEventListener('click', function() {
+                const packageName = this.closest('.package-card').querySelector('h3').textContent;
+                const packageSelect = document.getElementById('package');
+                
+                // Set the selected package in the contact form
+                if (packageName.includes('Starter')) {
+                    packageSelect.value = 'Starter Pack (59 BHD)';
+                } else if (packageName.includes('Growth')) {
+                    packageSelect.value = 'Growth Pack (99 BHD)';
+                } else if (packageName.includes('Premium')) {
+                    packageSelect.value = 'Premium Pack (149 BHD)';
+                }
+                
+                // Scroll to contact section
+                document.getElementById('contact').scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Set minimum date for meeting time to today
+        document.addEventListener('DOMContentLoaded', function() {
+            const meetingTimeInput = document.getElementById('meeting-time');
+            const now = new Date();
+            
+            // Format the date for datetime-local input (YYYY-MM-DDTHH:MM)
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            
+            const minDateTime = `${year}-${month}-${day}T${hours}:${minutes}`;
+            meetingTimeInput.min = minDateTime;
+            
+            // Set a default value (tomorrow at 10 AM)
+            const tomorrow = new Date(now);
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            tomorrow.setHours(10, 0, 0, 0);
+            
+            const defaultYear = tomorrow.getFullYear();
+            const defaultMonth = String(tomorrow.getMonth() + 1).padStart(2, '0');
+            const defaultDay = String(tomorrow.getDate()).padStart(2, '0');
+            const defaultHours = String(tomorrow.getHours()).padStart(2, '0');
+            const defaultMinutes = String(tomorrow.getMinutes()).padStart(2, '0');
+            
+            const defaultDateTime = `${defaultYear}-${defaultMonth}-${defaultDay}T${defaultHours}:${defaultMinutes}`;
+            meetingTimeInput.value = defaultDateTime;
+            
+            // Add event listener for date validation
+            meetingTimeInput.addEventListener('change', function() {
+                validateDateTimeInput(this);
+            });
+            
+            // Initialize validation
+            validateDateTimeInput(meetingTimeInput);
+            
+            // Alternative date selection
+            document.querySelectorAll('.date-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    // Remove selected class from all options
+                    document.querySelectorAll('.date-option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    
+                    // Add selected class to clicked option
+                    this.classList.add('selected');
+                    
+                    const days = parseInt(this.getAttribute('data-days'));
+                    
+                    if (days === 0) {
+                        // "Let's discuss" option - clear the datetime input
+                        meetingTimeInput.value = '';
+                        document.getElementById('date-success').style.display = 'block';
+                        document.getElementById('date-error').style.display = 'none';
+                    } else {
+                        // Calculate the date
+                        const selectedDate = new Date(now);
+                        selectedDate.setDate(selectedDate.getDate() + days);
+                        selectedDate.setHours(10, 0, 0, 0); // Set to 10 AM
+                        
+                        // Format for datetime-local input
+                        const selectedYear = selectedDate.getFullYear();
+                        const selectedMonth = String(selectedDate.getMonth() + 1).padStart(2, '0');
+                        const selectedDay = String(selectedDate.getDate()).padStart(2, '0');
+                        const selectedHours = String(selectedDate.getHours()).padStart(2, '0');
+                        const selectedMinutes = String(selectedDate.getMinutes()).padStart(2, '0');
+                        
+                        const selectedDateTime = `${selectedYear}-${selectedMonth}-${selectedDay}T${selectedHours}:${selectedMinutes}`;
+                        meetingTimeInput.value = selectedDateTime;
+                        
+                        // Validate and show success
+                        validateDateTimeInput(meetingTimeInput);
+                    }
+                });
+            });
+        });
+        
+        // Function to validate datetime input
+        function validateDateTimeInput(input) {
+            const errorElement = document.getElementById('date-error');
+            const successElement = document.getElementById('date-success');
+            
+            if (input.value && input.validity.valid) {
+                errorElement.style.display = 'none';
+                successElement.style.display = 'block';
+                return true;
+            } else {
+                errorElement.style.display = 'block';
+                successElement.style.display = 'none';
+                return false;
+            }
+        }
+        
+        // WhatsApp form submission
+        document.getElementById('whatsapp-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const business = document.getElementById('business').value;
+            const package = document.getElementById('package').value;
+            const message = document.getElementById('message').value;
+            const meetingTimeInput = document.getElementById('meeting-time');
+            
+            // Validate required fields
+            if (!name || !phone || !package) {
+                alert('Please fill in all required fields');
+                return;
+            }
+            
+            // Validate meeting time if provided
+            if (meetingTimeInput.value && !validateDateTimeInput(meetingTimeInput)) {
+                alert('Please select a valid meeting time');
+                return;
+            }
+            
+            // Format the message for WhatsApp
+            let whatsappMessage = `Hello XYNE X Team,%0A%0A`;
+            whatsappMessage += `I'm interested in your digital marketing services.%0A%0A`;
+            whatsappMessage += `*Name:* ${name}%0A`;
+            whatsappMessage += `*Phone:* ${phone}%0A`;
+            
+            if (email) {
+                whatsappMessage += `*Email:* ${email}%0A`;
+            }
+            
+            if (business) {
+                whatsappMessage += `*Business:* ${business}%0A`;
+            }
+            
+            whatsappMessage += `*Package:* ${package}%0A`;
+            
+            if (meetingTimeInput.value) {
+                // Format the date properly for display
+                const dateObj = new Date(meetingTimeInput.value);
+                const formattedDate = dateObj.toLocaleString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+                whatsappMessage += `*Preferred Meeting Time:* ${formattedDate}%0A`;
+            } else {
+                // Check if "Let's discuss" option is selected
+                const letsDiscussOption = document.querySelector('.date-option[data-days="0"].selected');
+                if (letsDiscussOption) {
+                    whatsappMessage += `*Preferred Meeting Time:* Let's discuss a suitable time%0A`;
+                }
+            }
+            
+            if (message) {
+                whatsappMessage += `*Message:* ${message}%0A`;
+            }
+            
+            whatsappMessage += `%0ALooking forward to hearing from you!`;
+            
+            // Open WhatsApp with the message
+            const whatsappURL = `https://wa.me/97336835116?text=${whatsappMessage}`;
+            window.open(whatsappURL, '_blank');
+            
+            // Optional: Reset form after submission
+            // this.reset();
+        });
+    </script>
+</body>
+</html>
